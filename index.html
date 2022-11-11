@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <title>Dra några vektorer</title>
+</head>
+<body>
+    <div id="inputDiv">
+        <b>Version 0.1</b>
+        <input id="inputText" type="text" placeholder="x,y,angle,length"/>
+        <button onclick="add()">Add</button>
+    </div>
+
+    <div id="inputDiv">
+        <label for="canvasWidth">Canvas width:</label>
+        <input id="canvasWidth" type="number" value="300" oninput="updateCanvas()">
+        <label for="canvasWidth">Canvas height:</label>
+        <input id="canvasHeight" type="number" value="300" oninput="updateCanvas()">
+    </div>
+
+    <canvas id="DemoCanvas"></canvas>
+    <script src="script.js" width="500", height="500"></script>
+</body>
+</html>
