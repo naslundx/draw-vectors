@@ -13,9 +13,11 @@ const span = document.getElementsByClassName("close")[0];
 const system = document.getElementById("system");
 
 const drawLine = (line) => {
+    const halfWidth = canvas.width / 2;
+    const halfHeight = canvas.height / 2;
     context.beginPath();
-    context.moveTo(line.x1, line.y1);
-    context.lineTo(line.x2, line.y2);
+    context.moveTo(line.x1 + halfWidth, line.y1 + halfHeight);
+    context.lineTo(line.x2 + halfWidth, line.y2 + halfHeight);
     context.stroke();
 }
 
@@ -33,8 +35,8 @@ const add = () => {
     const text = inputText.value.split(',');
     const angleSystem = system.selectedIndex;
 
-    x1 = parseInt(text[0]) + (canvas.width / 2);
-    y1 = parseInt(text[1]) + (canvas.height / 2);
+    x1 = parseInt(text[0]);
+    y1 = parseInt(text[1]);
     angle = parseInt(text[2]);
     distance = parseInt(text[3]);
 
