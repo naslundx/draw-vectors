@@ -1,11 +1,16 @@
 const lines = [];
+const DEG2RAD = Math.PI / 180; 
+const MIL2DEG = 0.05625;
 
 const canvas = document.getElementById('DemoCanvas');
 const inputText = document.getElementById('inputText');
 const canvasWidth = document.getElementById('canvasWidth');
 const canvasHeight = document.getElementById('canvasHeight');
 const context = canvas.getContext('2d');
-const DEG2RAD = Math.PI / 180; 
+const modal = document.getElementById("myModal");
+const btn = document.getElementById("myBtn");
+const span = document.getElementsByClassName("close")[0];
+const system = document.getElementById("system");
 
 const drawLine = (line) => {
     context.beginPath();
@@ -26,14 +31,20 @@ const drawLatest = () => {
 
 const add = () => {
     const text = inputText.value.split(',');
+    const angleSystem = system.selectedIndex;
 
-    x1 = parseInt(text[0]);
-    y1 = parseInt(text[1]);
+    x1 = parseInt(text[0]) + (canvas.width / 2);
+    y1 = parseInt(text[1]) + (canvas.height / 2);
     angle = parseInt(text[2]);
     distance = parseInt(text[3]);
+
+    if (angleSystem == 1) {
+        angle *= MIL2DEG;
+    }
+
     convertedAngle = (angle + 90) * DEG2RAD;
 
-    x2 = x1 + distance * Math.cos(convertedAngle);
+    x2 = x1 + distance * Math.cos(convertedAngle + Math.PI);
     y2 = y1 + distance * Math.sin(-convertedAngle);
 
     lines.push({
@@ -53,4 +64,22 @@ const updateCanvas = () => {
     canvas.width = width;
     canvas.height = height;
     drawAll();
+}
+
+updateCanvas();
+
+// ---
+
+const showModal = () => {
+    modal.style.display = "block";
+}
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }

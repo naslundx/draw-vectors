@@ -4,24 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css"/>
     <title>Dra några vektorer</title>
 </head>
 <body>
-    <div id="inputDiv">
-        <b>Version 0.1</b>
-        <input id="inputText" type="text" placeholder="x,y,angle,length"/>
-        <button onclick="add()">Add</button>
+    <div class="container">
+        <div class="settingContainer">
+            <i class="fa fa-plus" onclick="showModal()"></i>
+        </div>
+        <div class="canvasContainer">
+            <canvas id="DemoCanvas"></canvas>
+        </div>
     </div>
 
-    <div id="inputDiv">
-        <label for="canvasWidth">Canvas width:</label>
-        <input id="canvasWidth" type="number" value="300" oninput="updateCanvas()">
-        <label for="canvasWidth">Canvas height:</label>
-        <input id="canvasHeight" type="number" value="300" oninput="updateCanvas()">
-    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <b>Version 0.2</b>
+            
+            <div class="inputDiv">
+                <input id="inputText" type="text" placeholder="x,y,angle,length"/>
+                <select name="system" id="system">
+                    <option name="deg">Grader</option>
+                    <option name="mil">Mil</option>
+                </select>
+                <button onclick="add()">Add</button>
+            </div>
 
-    <canvas id="DemoCanvas"></canvas>
+            <div class="inputDiv">
+                <label for="canvasWidth">Canvas width:</label>
+                <input id="canvasWidth" type="number" value="300" oninput="updateCanvas()">
+                <label for="canvasWidth">Canvas height:</label>
+                <input id="canvasHeight" type="number" value="300" oninput="updateCanvas()">
+            </div>
+
+            <div class="inputDiv">
+                <b>Alla linjer</b>
+                TODO
+            </div>
+        </div>
+    </div>
+    
     <script src="script.js" width="500", height="500"></script>
 </body>
 </html>
